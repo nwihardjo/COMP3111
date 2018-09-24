@@ -35,6 +35,6 @@ mainClassName = 'Library'
 apply plugin: 'eclipse'
 eclipse {
     project {
-        name = 'Lab2'
+        name = 'Lab3'
     }
 }
