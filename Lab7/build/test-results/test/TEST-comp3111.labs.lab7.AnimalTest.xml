@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="comp3111.labs.lab7.AnimalTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2018-10-25T16:49:01" hostname="/0:0:0:0:0:0:0:1%lo" time="0.004">
+  <properties/>
+  <testcase name="testDieByFeedingTooMuch" classname="comp3111.labs.lab7.AnimalTest" time="0.003"/>
+  <testcase name="testInitWeight" classname="comp3111.labs.lab7.AnimalTest" time="0.0"/>
+  <testcase name="testInitAlive" classname="comp3111.labs.lab7.AnimalTest" time="0.0"/>
+  <testcase name="testDieByPoopingTooMuch" classname="comp3111.labs.lab7.AnimalTest" time="0.0"/>
+  <system-out><![CDATA[it dies becoz of overweight.
+it dies becoz of underweight.
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
