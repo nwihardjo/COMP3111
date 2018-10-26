@@ -40,6 +40,6 @@ public class AnimalTest {
 		Animal a = new Animal();
 		for (int i = 0; i < 6; i++)
 			a.poo();
-		ver
+		assertNotEquals((int)a.getWeight(), 1);
 	}
 }
