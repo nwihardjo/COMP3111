@@ -4,7 +4,6 @@
 
 ### Dealing with complexity
 
----
 Having **clear design goals** reduces system's design complexity as it is needed to 
 prioritise client's design goals (qualities).
 
@@ -26,7 +25,6 @@ prioritise client's design goals (qualities).
 
 ### Software Engineering
 
----
 - Modeling 
 - Problem solving: search solution in the presence of change -> systematic rather than algorithmic
 - Knowledge acquistion
@@ -39,7 +37,6 @@ prioritise client's design goals (qualities).
 ## L02
 
 ### UML
----
 General purpose visual modeling language for systems. Independent of the software development methodology / 
 process. Show essential details while filtering out non-essential ones to focus on the **programming-in-the-large**.
 
@@ -55,7 +52,6 @@ process. Show essential details while filtering out non-essential ones to focus 
 
 ### Class
 
----
 Describes a collection of objects (instances) which capture one abstraction theme. Reduces complexity of 
 understanding and specifying the system. Helps modular development.
 
@@ -77,13 +73,12 @@ understanding and specifying the system. Helps modular development.
 **Operation**: function / transformation applied to the class. **Method**: operation instance. Consists of: 
 
 - operation signature (name, params. names, result type)
--visibiliity.
+  -visibiliity.
 
 
 
 ### Association
 
----
 Description of the links (relationship instance) between two objects. Collection of names and association
 names must be unique.
 
@@ -119,8 +114,6 @@ relationship are aggregations.
 
 ### Dynamic model
 
----
-
 **Dependency** relates classes whose behaviour / implementation affect other classes.
 
 - **Flow** relates two versions of an object at successive times
@@ -146,7 +139,6 @@ relationship are aggregations.
 
 ### Generalisation
 
----
 Relationship between classes of the same kind. **Discriminator**: attribute of enumeration type that indicates which property of a class is used to create a generalisation relationship. Top-down is specialisation, bottom-up is generalisation.
 
 ![1543924682778](img/1543924682778.png)
@@ -181,8 +173,6 @@ Relationship between classes of the same kind. **Discriminator**: attribute of e
 
 ### Software Development Projects
 
----
-
 Stages of software development:
 
 - Gather system **requirements**
@@ -204,8 +194,6 @@ Types of software development projects:
 
 ### Risk
 
----
-
 **Risk analysis** involves estimating:
 
 - Likelihood (I<sub>i</sub>) that the risk (r<sub>i</sub>) will occur and establish a scale
@@ -223,8 +211,6 @@ Prioritize risks by perceived impact on the project
 
 
 ### Project Organisation
-
----
 
 Project organization specifies roles and responsibilities, number of staff in each role, and teams. **Task**: a well-defined work assignment for a role. **Activity**: a group of related tasks. **Estimating** is trying to quantify something before it occurs.
 
@@ -248,8 +234,6 @@ Software development process have to consider the characteristics of organisatio
 
 ### Monolithic
 
----
-
 **Waterfall** process should be used when requirements are well understood and unlikely to change. It produces **requirements** specification, **design** specification, implemented collection of **modules**, **tested assembly** of modules, and keep the system **working** and up-to-date.
 
 
@@ -259,8 +243,6 @@ Software development process have to consider the characteristics of organisatio
 
 
 ### Iterative and Incremental
-
----
 
 #### Code-and-fix
 
@@ -322,8 +304,6 @@ Two methods:
 
 ### Unified Process (UP)
 
----
-
 Referred as whale-hump picture. Provides generic process framework while defining a set of activities (workflows) and models (artifacts). Each iteration (vertical) produces working product, while each increment (horizontal) establishes a system baseline.
 
 
@@ -333,8 +313,6 @@ Referred as whale-hump picture. Provides generic process framework while definin
 ## L06
 
 ### Requirements
-
----
 
 Requirement specifies problem (what it should do), not solution (how it is done). Capturing requirement reduces error and cost of software development (cost of defect in requirements are amplified towards the system usage). Two types of requirements:
 
@@ -354,8 +332,6 @@ Requirement capture activities include: understanding application domain and use
 ## L08
 
 ### Use-case Modeling
-
----
 
 Captures **system behaviour** from users' POV by describing all required functionality. 
 
@@ -388,8 +364,6 @@ Provides brief description of the purpose of each use case and outline of steps 
 
 ### Use-case Details
 
----
-
 **Precondition** statement about the system, actor must be in for the use case to be performed. Stated so each use-case descriptions are independent to each other
 
 
@@ -399,8 +373,6 @@ Provides brief description of the purpose of each use case and outline of steps 
 
 
 ### Flow of Events
-
----
 
 Flow of events is a precise and easy to read description of sequence of actions needed for a use case, what should be done, not how it is being done. It is a sequence of numbered, time-ordered, event-response oriented short steps.
 
@@ -444,8 +416,6 @@ First line and last line of an alternative flow's flow of events should state ex
 
 ### System Requirements Capture
 
----
-
 **Domain modeling** captures data requirements by using class diagram which shows different classes and relationships.
 
 
@@ -463,6 +433,3 @@ First line and last line of an alternative flow's flow of events should state ex
 ## L11
 
 ### Implementation 
-
----
-
