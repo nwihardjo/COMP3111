@@ -1,12 +1,9 @@
-# COMP3111-Software-Engineering
+# COMP3111: Software Engineering Final Review
 
-## Final Review
+## L01
 
+### Dealing with complexity
 
-
-### L01
-
-#### Dealing with complexity
 ---
 Having **clear design goals** reduces system's design complexity as it is needed to 
 prioritise client's design goals (qualities).
@@ -14,6 +11,7 @@ prioritise client's design goals (qualities).
 
 
 **Modular and Incremental Development** reduces complexity of cost and time estimates
+
 - Module: a part of a system which makes sense to be considered separately
 - Interact with module only via **interfaces**, which **abstracts** and **encapsulates** a module to support 
   information hiding. 
@@ -26,7 +24,7 @@ prioritise client's design goals (qualities).
 
 
 
-#### Software Engineering
+### Software Engineering
 
 ---
 - Modeling 
@@ -38,9 +36,9 @@ prioritise client's design goals (qualities).
 
 
 
-### L02
+## L02
 
-#### UML
+### UML
 ---
 General purpose visual modeling language for systems. Independent of the software development methodology / 
 process. Show essential details while filtering out non-essential ones to focus on the **programming-in-the-large**.
@@ -55,7 +53,7 @@ process. Show essential details while filtering out non-essential ones to focus 
 
 
 
-#### Class
+### Class
 
 ---
 Describes a collection of objects (instances) which capture one abstraction theme. Reduces complexity of 
@@ -83,7 +81,7 @@ understanding and specifying the system. Helps modular development.
 
 
 
-#### Association
+### Association
 
 ---
 Description of the links (relationship instance) between two objects. Collection of names and association
@@ -119,7 +117,7 @@ relationship are aggregations.
 
 
 
-#### Dynamic model
+### Dynamic model
 
 ---
 
@@ -140,13 +138,13 @@ relationship are aggregations.
 
 
 
-### L03
+## L03
 
 **Association class** is used when the association has attribute, most often needed for many-to-many associations.
 
 
 
-#### Generalisation
+### Generalisation
 
 ---
 Relationship between classes of the same kind. **Discriminator**: attribute of enumeration type that indicates which property of a class is used to create a generalisation relationship. Top-down is specialisation, bottom-up is generalisation.
@@ -179,9 +177,9 @@ Relationship between classes of the same kind. **Discriminator**: attribute of e
 
 
 
-### L04
+## L04
 
-#### Software Development Projects
+### Software Development Projects
 
 ---
 
@@ -204,7 +202,7 @@ Types of software development projects:
 
 
 
-#### Risk
+### Risk
 
 ---
 
@@ -224,7 +222,7 @@ Prioritize risks by perceived impact on the project
 
 
 
-#### Project Organisation
+### Project Organisation
 
 ---
 
@@ -242,13 +240,13 @@ Project organization specifies roles and responsibilities, number of staff in ea
 
 
 
-### L05
+## L05
 
 Software development process have to consider the characteristics of organisation, project, and people.
 
 
 
-#### Monolithic
+### Monolithic
 
 ---
 
@@ -260,17 +258,17 @@ Software development process have to consider the characteristics of organisatio
 
 
 
-#### Iterative and Incremental
+### Iterative and Incremental
 
 ---
 
-##### Code-and-fix
+#### Code-and-fix
 
 Cycle in implementation and testing with many changes and becomes messy, unpredictable, and uncontrollable. With no requirements specification, often unsuitable for large systems.
 
 
 
-##### Prototyping
+#### Prototyping
 
 is a code-and-fix with client evaluation and enforces discipline. Useful when requirements are vague or unknown as it allows exploration. Final prototype follows the **80:20 rule**: 80% of the effort is for 20% of code development.
 
@@ -282,7 +280,7 @@ is a code-and-fix with client evaluation and enforces discipline. Useful when re
 
 
 
-##### Spiral
+#### Spiral
 
 **Pros**: risk evaluation reduce problems, planning and client evaluation phases, iterative and incremental planning and evaluation. **Cons**: relies on expertise, needs more elaboration of the phases, suitable for internal rather than contract development.
 
@@ -290,7 +288,7 @@ is a code-and-fix with client evaluation and enforces discipline. Useful when re
 
 
 
-##### Phased-release
+#### Phased-release
 
 Releases are developed and uses in parallel as change is inevitable. Two types of development:
 
@@ -303,7 +301,7 @@ Releases are developed and uses in parallel as change is inevitable. Two types o
 
 
 
-##### Agile
+#### Agile
 
 Any incremental phased approach where focused on individuals and interactions, working software, client collaboration, and responsive to change. Three practises:
 
@@ -322,7 +320,7 @@ Two methods:
 
 
 
-#### Unified Process (UP)
+### Unified Process (UP)
 
 ---
 
@@ -332,9 +330,9 @@ Referred as whale-hump picture. Provides generic process framework while definin
 
 
 
-### L06
+## L06
 
-#### Requirements
+### Requirements
 
 ---
 
@@ -353,9 +351,9 @@ Requirement capture activities include: understanding application domain and use
 
 
 
-### L08
+## L08
 
-#### Use-case Modeling
+### Use-case Modeling
 
 ---
 
@@ -386,9 +384,9 @@ Provides brief description of the purpose of each use case and outline of steps 
 
 
 
-### L09
+## L09
 
-#### Use-case Details
+### Use-case Details
 
 ---
 
@@ -400,7 +398,7 @@ Provides brief description of the purpose of each use case and outline of steps 
 
 
 
-#### Flow of Events
+### Flow of Events
 
 ---
 
@@ -434,7 +432,7 @@ First line and last line of an alternative flow's flow of events should state ex
 
 
 
-### L10
+## L10
 
 **Non-functional requirement** places constraint on a use case / system. It is specified as **supplementary requirements** in **non-functional requirements** which is use cases that deal with non-functional requirements.
 
@@ -444,7 +442,7 @@ First line and last line of an alternative flow's flow of events should state ex
 
 
 
-#### System Requirements Capture
+### System Requirements Capture
 
 ---
 
@@ -456,19 +454,15 @@ First line and last line of an alternative flow's flow of events should state ex
 
 
 
-**Requirement validation** verifies the system meets all requirements.	
-
-
-
-These system requirements is documented in **SRS**.
+**Requirement validation** verifies the system meets all requirements. These system requirements is documented in **SRS**.
 
 
 
 
 
-### L11
+## L11
 
-#### Implementation 
+### Implementation 
 
 ---
 
