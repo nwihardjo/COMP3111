@@ -369,7 +369,7 @@ Captures **system behaviour** from users' POV by describing all required functio
 
 
 
-**Use case** is a specific way of using the system by performing some of the system's functionalities, describing the interaction between actor and system, constituting a complete normal sequence of events / actions. Represents a major piece of complete functionality. Can't be generalised.
+**Use case** is a specific way of using the system by performing some of the system's functionalities, describing the interaction between actor and system, constituting a complete normal sequence of events / actions. Represents a major piece of complete functionality
 
 
 
@@ -408,11 +408,67 @@ Flow of events is a precise and easy to read description of sequence of actions 
 
 
 
-**Basic flow**: most common path, one complete sequence of actions. **Alternative flows**: optional, exception behaviour which is defined by **extension point**, a named place in the flow of events where additional behaviour can take place. Kinds of extension points:
+**Basic flow**: most common path, one complete sequence of actions to mitigate risk of misunderstanding and ambiguity. **Alternative flows**: optional, exception behaviour and infrequent used functionality which is uniquely-named and defined by **extension point**, consisting of:
+
+- **Specific** alternative flow: starts at specific named point in another flow of events
+- **Bounder** alternative flow: occur between two points
+- **General** alternative flow: able to start at any point
+
+
+
+First line and last line of an alternative flow's flow of events should state explicitly where the actor starts and resumes the original flow of events.
+
+
+
+**Extension point**: named place in the flow of events where additional behaviour can take place. Kinds of extension points:
 
 - **Single location**
 - **Set of discrete locations**: multiple places
 - **Region**: pair of extension points which delineates set of locations in-between.
 
 
+
+**Subflow** is a numbered and uniquely-named segment of behaviour within a flow of events to improve readability. It is not a separate use case, rather an integral part.
+
+
+
+
+
+### L10
+
+**Non-functional requirement** places constraint on a use case / system. It is specified as **supplementary requirements** in **non-functional requirements** which is use cases that deal with non-functional requirements.
+
+
+
+**System Requirement Specification (SRS)** should be validated continuously to verify its completeness, consistency, clearness, correctness, realistic. **Acceptance tests** are used to validate the requirement satisfaction of the system implementation.
+
+
+
+#### System Requirements Capture
+
+---
+
+**Domain modeling** captures data requirements by using class diagram which shows different classes and relationships.
+
+
+
+**Use-case modeling** captures functional requirements by using use-case model (provide system functionality and the actors which used it) and flow of events (describe sequence of actions).
+
+
+
+**Requirement validation** verifies the system meets all requirements.	
+
+
+
+These system requirements is documented in **SRS**.
+
+
+
+
+
+### L11
+
+#### Implementation 
+
+---
 
