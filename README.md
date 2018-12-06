@@ -50,6 +50,14 @@ process. Show essential details while filtering out non-essential ones to focus 
 
 
 
+**Key points** on designing UML model:
+
+- Do not represent operations(generate, browse, enter, lookup) as associations. ==Associations is result of operations, not the operation itself==
+- Do not represent implementation aspects (System, telephone, reports), and client / organisation
+- ==Consider what information about things / procedures needs to be persistent (in files & database)==. If not, no need to include. 
+
+
+
 ### Class
 
 Describes a collection of objects (instances) which capture one abstraction theme. Reduces complexity of 
@@ -302,6 +310,19 @@ Two methods:
 
 
 
+#### ==Principles==
+
+- Rigor and formality: waterfall, spiral
+- Separation, modularity: waterfall, spiral, phased-release
+- Abstraction, generality: waterfall, spiral
+- Change anticipation: spiral, phased-release, agile
+- Incremental development: prototyping, spiral, phased-release, agile
+- Risk assessment: spiral
+
+
+
+
+
 ### Unified Process (UP)
 
 Referred as whale-hump picture. Provides generic process framework while defining a set of activities (workflows) and models (artifacts). Each iteration (vertical) produces working product, while each increment (horizontal) establishes a system baseline.
@@ -337,7 +358,7 @@ Captures **system behaviour** from users' POV by describing all required functio
 
 
 
-**Actor** represents something outside the system that interacts directly with the system, provides input and receives output. 
+**Actor** represents something outside the system that interacts directly with the system, provides input and receives output. System, devices, input and output devices are not actors. 
 
 ![1543990922518](img/1543990922518.png)
 
@@ -433,3 +454,321 @@ First line and last line of an alternative flow's flow of events should state ex
 ## L11
 
 ### Implementation 
+
+**Module**: physical and replaceable part of the system which packages implementation and provide set of interfaces. **Subsystem** organises modules. Modules and subsystems then compiled into executable modules.
+
+
+
+### Defensive Programming 
+
+Values of all data from external resources and all routine input parameters are checked, bad inputs is handled. **Barricade** are converting input data to the proper type at **input time** using **assertions** on pre-, post-condition, and invalid input. 
+
+
+
+**Precondition** is an assertion inserted prior to execution; **postcondition** is an assertion inserted after execution.
+
+
+
+**Forward reasoning** (more intuitive) knows the precondition, and predict the postcondition. **Backward reasoning** knows the postcondition, predict the precondition.
+
+
+
+**Refactoring**: improving part of software's internal structure without altering its external behaviour, to maintain the code execute its functionality, allow change, and communicate well. Where **low-level refactor** is supported on IDE, the **high-level refactoring** includes exchanging obscure language idioms, statements clarifying, performance optimisation, design pattens refactoring.
+
+
+
+
+
+## L12
+
+### Debugging Defense
+
+Use debug as a last resort. **Modularity**: take away pieces until bug disappears, and add pieces back in until bug appears. **Modular reasoning**: trace through programme while viewing intermediate results.
+
+
+
+**Regression testing**: add a test for whenever a bug was found. Then re-run all the test.
+
+
+
+### Configuration Management (CM)
+
+**Change Management** ensures that a system evolution is a managed process which give priority to the most urgent and cost-effective changes. The change management is supported by software library which provide facilities to store, control version and track configuration items' status. **Configuration item**: artifact going to be controlled changes.
+
+![1544034197860](img/1544034197860.png)
+
+
+
+**Baseline** is a time / phase in the software development after which any changes must be formalised. **Change control** defines the formal process of making changes to a project, for which the change control authority evaluates it. 
+
+
+
+**Auditing** ensures that changes have been properly implemented, usually done by Quality Assurance. **Status reporting**: communication mechanism that keeps all parties informed on the status of the change. **Version management** ensures integrity and consistency of configuration items, described by **evolution graph** shows an item's change history.
+
+
+
+
+
+## L13
+
+### Testing
+
+![1544073967752](img/1544073967752.png)
+
+
+
+In inception, elaboration, and construction, the focus is on integration and system test. Transition focuses on fixing bugs and regression testing.
+
+
+
+**Testing** finds difference between expected and actual system behaviour through:
+
+- **Validation**: build the right product, meet requirements through acceptance test
+- **Verification**: build the product right, quality of implementation
+
+'
+
+**Input space partitioning**: partition inputs into sets which shares same behaviour to test each value from each set. Two approaches:
+
+- **Naive approach**: execution equivalence
+- **Better approach**: revealing subdomains (subset of possible inputs). Partition by heuristics on program-dependent and program-independent information.
+
+
+
+### Design Tests
+
+#### White Box Test
+
+verifies component logic using knowledge of the internal workings of the component. 
+
+
+
+**Basis path testing** executes each independent path at least once by determining set of linearly independent paths based on cyclomatic complexity from the flow graph.
+
+
+
+**Cyclomatic complexity, V(G)**: quantitative measure of logical complexity, provides upper bound on number of paths needed to be tested. 
+
+
+```markdown
+V(G) = number of regions (areas bounded by nodes and edges including area outside graphs) 
+V(G) = #edges - #nodes + 2 
+V(G) = # simple predicate nodes + 1
+```
+
+
+
+**Independent path** must traverse at least one edge in the flow graph that hasn't been traversed before. **Basis set** is the set of linearly independent paths which is not unique, but guarantees to execute every statement at least once. Basis path testing doesn't test all possible combinations of all paths.
+
+
+
+
+![1544075955333](img/1544075955333.png)
+
+
+
+#### Black Box
+
+verifies component functionality based on inputs and outputs based on knowledge of specified functionality
+
+
+
+#### Regression
+
+ verifies no new defects are introduced after change
+
+
+
+
+
+## L14
+
+### White Box Testing
+
+**Condition testing** executes true and false value of each simple logical condition through:
+
+- **Branch testing**: test every true and false branches, as covered in basis path testing
+- **Domain testing**: detection of rel-op (relation operation) error. For expression E<sub>1</sub> rel-op E<sub>2</sub>, test E<sub>1</sub> > E<sub>2</sub>, E<sub>1</sub> = E<sub>2</sub>, E<sub>1</sub> < E<sub>2</sub> with the difference as small as possible.
+
+
+
+**Loop testing** executes loops at and within their bounds through:
+
+- Simple loops
+- Nested loops: simple loop test for the innermost while holding outer loops at their minimum iteration values. Work outward
+- Concatenated loops: use simple loop testing for independent loops, nested loop testing for dependent.
+
+
+
+**Data flow testing** ensures variable value is correct at a certain points of execution by selecting test paths based on locations of definitions (S) and uses (S') of a variable (X).
+
+
+
+**Use (DU) Chain (X)** is the set of [X, S, S'] where X is not redefined between S and S`. Test every variable along the path from where the variable is defined to where the variable is used, combined with basis path testing.
+
+
+
+### Black Box Testing
+
+Cover a range of input and output values to test the presence or absence of a class of errors. **Equivalence partitioning** creates subdomains by grouping inputs and outputs by type to create test coverage. Select subdomains based on its validity and invalidity.
+
+
+
+**Boundary testing** uses values at the boundaries of a main subdomain. Use minimum values of subdomains which represent both validity and invalidity, and use the minimum and maximum values, as well as just above and just below each the boundary.
+
+
+
+**Thread testing**: event-based approach where tests are based on event which trigger system actions, used after unit test.
+
+
+
+**State-based testing** compare the resulting state of a class with the expected ones. Test cases was derived using state machine diagram, and derived a representative set of stimuli / events for each transition / equivalence testing.
+
+
+
+**Regression testing**: reproduces the bug while recording the input and correct output, and then the test is put into test suit to prevent bug occurrence in the future.
+
+
+
+
+
+## L15
+
+**Test component**: program that automates one or several, parts or all test procedures. As we develop the system outside in (from client's acceptance testing to unit testing), we test the system inside out.
+
+
+
+### Testing Strategy
+
+#### Unit testing
+
+uses both white and black box test to verify the components function correctly. May require **driver** (component which calls component to be tested) and **stubs** (component called to be tested).
+
+
+
+#### Integration testing
+
+uses both white and black box test to verify the subsystems interact correctly.
+
+
+
+**Top down**: test top sub-system with stubs, and stubs replaced on eat a time depth- or breadth-first. If new sub-system integrated, do regression testing. 
+
+- Pros: early testing and error detection
+- Cons: low-level processing is done late, require stubs
+
+
+
+**Bottom up**: subsystems are grouped into builds and integrated. Drivers are replaced one at a time depth-first. 
+
+- Pros: interaction fault easily found, easier test case, no stubs
+- Cons: user interaction tested last
+
+
+
+**Sandwich**: top level subsystems tested with stubs, lower level are grouped into build and tested with driver.
+
+- Pros: parallel testing, shorten testing time
+- Cons: require drivers and stubs
+
+
+
+#### System testing
+
+uses black box test to verify the system functions correctly as a whole. Consists of:
+
+- Functional: verify system met requirements specification.
+- Performance: design goals & nonfunctional requirements met
+- Pilot: end users verifies common functionality in the target environment. **Alpha test**: test in controlled environment that users can be observed. **Beta test**: test in real environment where bugs uncovered from regular usage patterns.
+- Acceptance: verifies function / constraint is fully operational and requirement is met to client.
+- Installation: verifies usability and validates requirements
+
+
+
+#### Acceptance Test
+
+uses black box test to validate against requirements.
+
+
+
+
+
+## L16
+
+**System analysis and design** structures use-case model and prepares it for implementation to provide precise and detailed understanding of the requirements.
+
+
+
+### Architectural Analysis and Design
+
+**Subsystem layers** consists of:
+
+- **Closed layered**: depend only on the layer immediately below it. Lower coupling, higher overhead
+- **Open layered**: depend on any layer below it. Higher coupling, less overhead
+
+
+
+**Subsystem partition** organises subsystems in one layer into different services, resulted in peer to peer services within a layer.
+
+
+
+### Architectural Pattern
+
+**Multi-layer**: software in layers so that each layer only communicate with the one below it.
+
+
+
+**Repository**: centralise data management. Control flow is dictated through via triggers or subsystems using locks to synchronise. Cons: performance and modifiability bottleneck, high coupling between repo and subsystems.
+
+
+
+**Client-server**: separate and distribute system's functionality. Two types:
+
+- **Three-tier**: server communicates with client and database server
+- **Peer-to-peer**: each subsystem can be both a server and a client. Control flow is independent from others except synchronisation request
+
+
+
+**Broker**: distribute aspects of the system transparently to different nodes, such as proxy design pattern.
+
+
+
+**Transaction Processing**: direct input to specialised subsystems (handlers), through transaction dispatcher which decide what to do with each input transaction.
+
+![1544085762427](img/1544085762427.png)
+
+
+
+**Pipe-and-filter**: provide flexibility, modifiability, and reusability of subsystems which can be done concurrently. Input is passed through series of subsystems / filters as pipeline, each of which transform it. 
+
+
+
+**Model-view-controller (MVC)**: separate user interface layer from other parts. 
+
+
+
+### Use-case Analysis
+
+**Analysis class**: abstraction of one or several classes in the final system implementation. 
+
+
+
+**Boundary class** models the interaction between system and actors which represents an abstraction of UI elements / communication interface.
+
+![1544087898426](img/1544087898426.png)
+
+
+
+**Entity class** models information that is often persistent in database, represent the concept of individual, real-life object or event. 
+
+![1544090485184](img/1544090485184.png)
+
+
+
+**Control class** models coordination, sequencing, transactions, and control behaviour. Responsible for the flow of events, and only tied to at most one actor. It usually does not have a correspondence in the application domain. 
+
+![1544090674060](img/1544090674060.png)
+
+
+
+**Cohesion** is a measure of number of a class functionality, desired to be high. Most cohesive is when it only does one thing. **Coupling** is a measure of number and types of dependencies, desired to be low. Lowest coupling has minimal dependencies.
