@@ -772,3 +772,319 @@ uses black box test to validate against requirements.
 
 
 **Cohesion** is a measure of number of a class functionality, desired to be high. Most cohesive is when it only does one thing. **Coupling** is a measure of number and types of dependencies, desired to be low. Lowest coupling has minimal dependencies.
+
+
+
+
+
+## L17
+
+### State Machine Diagram
+
+State Machine describes the behaviour inside an object. It is directed graph from states of the object (**nodes**) to events that cause state changes (**arcs**).
+
+
+
+**State** is a time during the life of an object when it satisfies, performs, and waits for an event. Unnamed state is called **anonymous**. There is initial (start) state, and final (end) state.
+
+
+
+**Transition** is a change of state from source / originating state to successor / target state. It is uninterrupted, caused by an event trigger, and optionally an **guard condition** (Boolean expression which must be true). **Effect list**: atomic expression executed if and when a transition fires.
+
+
+
+**Event**: something that happens at an instantaneous point in time. Types of event:
+
+- Call event: receipt of a synchronous call (request that an operation to be performed)
+- Signal event: receipt of an asynchronous communication
+- Change event: specified Boolean condition becoming true
+- Time event: absolute time / elapsed time
+
+
+
+Events are processed one at a time, and one transition within a state machine may fire. Transition out of a state can be **automatic** (activity of the state completes) or **non-automatic** (caused by an event).
+
+
+
+**Action**: process transition between states which is instantaneous and can't be interrupted. **Activity**: a process in a state which takes time and can be interrupted.
+
+
+
+### Composite State Machine Diagram
+
+Composite SMD contains one or more nested SMD.
+
+![1544099297055](img/1544099297055.png)
+
+
+
+**Sequential composite**: exactly one state in one of the nested state machine diagrams. Corresponds to or-condition, used to abstract / generalise states.
+
+
+
+**Concurrent composite**: exactly one state in each of the regions of the state machine diagrams. Corresponds to and-condition, for multi-threading behaviour. 
+
+
+
+Transitions in composite state may have multiple source and target states, which represent synchronisation or splitting of control. **Synchronisation bar** which occurs  to the boundary (fork) and from the boundary (join) is used for synchronisation.
+
+
+
+
+
+## L18
+
+### Design Patterns
+
+Design pattern is a general reusable solution to commonly occurring problem. It facilitates reuse of successful software design which is documented in a **pattern catalog**. 
+
+
+
+==**Design principle**==: 
+
+- Identify aspects of application that vary and separate them from what stays the same. 
+- Program to an interface, not an implementation.
+- Favour composition (has-a relationship) over inheritance (is-a relationship).
+- Strive for loosely coupled designs between objects that interact to minimise the interdependency.
+- Classes should be open for extension, but closed for modification (**open-closed principle**)
+
+
+
+**Design patterns space**:
+
+- Creational patterns: initialising and configuring classes and objects
+- Structural patterns: decoupling interface and implementation
+- Behavioural patterns: dynamic interactions among societies of classes and objects
+- Concurrency patterns: multi-threaded programming
+
+
+
+**Observer**  pattern defines a one-to-many dependency between objects, so that when an object changes state, the dependents are notified and updated automatically.
+
+
+
+
+
+## L19
+
+### Design Patterns
+
+**Mediator** pattern is commonly used to coordinate related GUI components. Mediator class defines interface for communicating with Colleague objects.
+
+- Pros: decoupled colleagues, comprehension, simplified object protocols, limits subclassing
+- Cons: complexity
+
+
+
+**Proxy** pattern uses an proxy that acts as a stand-in (surrogate) for the real expensive object. Proxy class maintains reference to the real subject for which it control access to the real subject and responsible for it.
+
+
+
+**Bridge** pattern solves the mix of design (abstractions) and implementation inheritance hierarchies by separating the object abstraction and implementation class hierarchies and connect them using a bridge.
+
+
+
+**Singleton** pattern make the class responsible for keeping track of its sole instance, ensure that no other instance can be created, and provide a way to access the instance.
+
+
+
+**Simple factory** pattern enables user to decide at runtime specific subclass instantiation using the open-closed principle.
+
+
+
+### Anti Patterns
+
+Anti pattern tells what is a bad solution, used as tools for social control.
+
+
+
+**Spaghetti code**: software where it has reached a point of diminishing returns where the effort involved to maintain existing code exceeds the cost of developing a new solution.
+
+
+
+**Blob / god class**: a single class with many attributes / operations which violates the cohesion property of object-oriented design.
+
+
+
+## L20
+
+**Quality Assurance** consists of procedures, techniques, and tools to ensure that a product meets or exceeds standards during development cycle. **Quality control** ensures standards are followed, **quality planning** selects and tailors standards, **quality assurance** defines organisational standards.
+
+
+
+###  Software Quality Activity
+
+**Technical standard** is requirement that establishes uniform technical criteria, methods, etc. 
+
+- **Product** standard focuses on what outcome is produced and define characteristics of the product artifacts should exhibit.
+- **Process** standard focuses on how outcome is produced and how the software process should be conducted.
+
+
+
+**Metrics** is a objective way to measure software product, process, or artifact. It is used to control development process and predict product quality. 
+
+
+
+### Quality Metrics for System Design
+
+For design component, a design goal is maintainability.
+
+#### Structural fan-in / fan-out
+
+**Fan-in**: number of calls to a component by other component. Higher fan-in, higher coupling.
+
+
+
+**Fan-out**: number of components called. Higher fan-out, high complexity (for calling component).
+
+
+
+#### Informational fan-in / fan-out
+
+Considering the number of parameters passed + number of accesses to shared data structures. Useful predictor of effort required for implementation.
+
+```markdown
+Complexity = component-length * (fan-in * fan-out)^2
+```
+
+
+
+#### IEEE Standard
+
+Considers properties of subsystems (number of subsystems and degree of coupling) and database (number of attributes and classes). 
+
+
+
+**DSQI (Design Structure Quality Index)** is computed, with the value [0,1]. Lower DSQI, further work may be required.
+
+
+
+Also able to consider changes made throughout product's history and compute the stability.
+
+
+
+**SMI (Software Maturity Index)** is computer; with the value [0,1]. Higher SMI, the more stabile.
+
+
+
+### Quality Metrics for Implementation
+
+For implementation component, design goals are reliability and ease of implementation. Measured based on lines of code, length of identifiers, depth of conditional nesting.
+
+
+
+**Halstead's Software Science** measures based on number of operators and operands in a component, then calculate the values for component volume V (bits), component difficulty D, and effort E required to implement.
+
+
+
+**McCabe's Complexity Metric** measures based on control flow in a component and calculates cyclomatic complexity.
+
+
+
+### Achieving Product Quality
+
+**Statistical Quality Assurance** categorises and determines causes of software defects based on 80-20 rule: 80% defect caused by 20% of causes.
+
+
+
+**Software Configuration Management (SCM)** manages, controls, and monitors changes to life cycle artifacts.
+
+
+
+**ISO**:
+
+- ISO 9000: specifies actions to be taken when quality goals and constraints specified
+- ISO 9001: requires organisation to have documented quality system, which defines and documents the organisation's quality process
+- ISO 9000-3: specifies generic procedures that should be in place to have a quality process. Intended to help client assess the process management capabilities of an organisation.
+
+
+
+**SEI Process Capability Maturity Model (SEI-CMM)** is intended to help organisation assess and improve the development process. Can be a measure of people quality too, known as **PCMM**.
+
+- Level 1: **Initial** process (ad hoc): no formal procedures, no project plans, etc
+- Level 2: **Repeatable** process (intuitive): focus on management, basic project controls
+- Level 3: **Defined** process (qualitative): focus on management and engineering, training provided
+- Level 4: **Managed** process (quantitative): add metrics, measured process, process database established
+- Level 5: **Optimising** process: add feedback
+
+
+
+
+
+## L21
+
+### Project Management
+
+**Software Development Plan (SDP)** documents the scope of the development effort and how the project will be managed. **Work Breakdown Structure (WBS)** allow each task to be easily managed, as the SDP breaks the project into tasks and sub-tasks for easier division of labour.
+
+
+
+3 levels of schedule:
+
+- Master schedule: management and client communication, rigid
+- Macro schedule: day-to-day project management, semi-rigid
+- Micro schedule: team management, highly flexible
+
+
+
+**PERT (Program Evaluation and Review Technique) Chart** is a graphical representation of project tasks laid out in the form of a critical path network.
+
+- Critical path is the longest time path from start to end node. 
+- **Slack** specifies how much the task can be delayed without putting project behind schedule.
+- **Dummy task** ensures each node has at least one task starting and one task ending at the node.
+
+
+
+### Estimates
+
+```markdown
+Size = LOC, # subsystems, # classes, etc
+Effort = persons * duration
+Productivity = size / effort
+Duration = months until delivery
+Development cose = labour
+```
+
+
+
+**Size-oriented metrics** is based on past software project to calculate several metrics.
+
+```markdown
+Productivity = KLOC / effort
+Cost = $K / KLOC
+Quality = errors / KLOC
+Documentation = pages / KLOC
+```
+
+
+
+**Function-oriented metrics** is based on properties of the project software.
+
+```markdown
+FP = count-total * {0.65 + 0.01 * sum(Fi)}
+Productivity = FP / effort
+Cost = $ / FP
+Quality = errors / FP
+Documentation = pages / FP
+```
+
+
+
+**System-level Analogy** based on previous similar development which uses **Delphi technique**.
+
+
+
+**PERT Estimation** based on range of values (O, M, P) provided. **Expected value** E is computed as a weighted average of optimistic O, most likely M, and pessimistic P. **StdDev** is a measure of schedule of budget risk. The actual size will fall between (E-StdDev) and (E+StdDev) 68% of the time.
+
+```markdown
+E = (O + 4M + P) / 6
+StdDev = (P - O) / 6
+```
+
+
+
+**Planning Poker** is based on estimation made by team members, after clarification of assumptions and risk, by playing numbered cards face-down to the table and revealed simultaneously, instead of discussing the number.
+
+
+
+**Parametric Models** uses parametric formulas, empirically derived to predict a project resources.
