@@ -38,7 +38,7 @@ prioritise client's design goals (qualities).
 
 ### UML
 General purpose visual modeling language for systems. Independent of the software development methodology / 
-process. Show essential details while filtering out non-essential ones to focus on the **programming-in-the-large**.
+process. Show essential details while filtering out non-essential ones to focus on the **programming-in-the-large** (see it from the bigger picture).
 
 
 
@@ -131,7 +131,7 @@ relationship are aggregations.
 
 
 
-**Realisation** relates a specification to its implementation
+**Realisation** relates a specification to its implementation / interface
 
 ![1543926869721](img/1543926869721.png)
 
@@ -194,6 +194,7 @@ Types of software development projects:
 
 - Green field: new development
 - Evolutionary: maintenance
+- **Custom**: development effort is high
 - Framework / component: reuse. A **framework** is a software designed to be reused while needing to be adapted
 
 ![1543928363406](img/1543928363406.png)
@@ -652,7 +653,7 @@ uses both white and black box test to verify the subsystems interact correctly.
 
 
 
-**Top down**: test top sub-system with stubs, and stubs replaced on eat a time depth- or breadth-first. If new sub-system integrated, do regression testing. 
+**Top down**: test top sub-system with stubs, and stubs replaced one at a time, depth- or breadth-first. If new sub-system integrated, do regression testing. 
 
 - Pros: early testing and error detection
 - Cons: low-level processing is done late, require stubs
