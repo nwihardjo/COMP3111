@@ -696,20 +696,24 @@ uses black box test to validate against requirements.
 
 ## L16
 
-**System analysis and design** structures use-case model and prepares it for implementation to provide precise and detailed understanding of the requirements.
+**System analysis and design** structures use-case model and prepares it for implementation to provide precise and detailed understanding of the requirements. It prioritise design goals and develop trade-offs against each other and managerial goals.
 
 
 
-### Architectural Analysis and Design
+General design strategy for technical issues: **encapsulate and isolate** implementation environment by creating ***bridge* classes** that represent occurrences of components in the implementation environment. 
 
-**Subsystem layers** consists of:
+
+
+### Architectural Analysis and Design 
+
+**Subsystem** identifies main structural components and relationship between them to encapsulate its content and provide interface to other subsystem to **manage complexity**. **Subsystem layers** consists of:
 
 - **Closed layered**: depend only on the layer immediately below it. Lower coupling, higher overhead
 - **Open layered**: depend on any layer below it. Higher coupling, less overhead
 
 
 
-**Subsystem partition** organises subsystems in one layer into different services, resulted in peer to peer services within a layer.
+**Subsystem partition** organises subsystems in one layer into different **services**, resulted in peer to peer services within a layer.
 
 
 
@@ -719,7 +723,7 @@ uses black box test to validate against requirements.
 
 
 
-**Repository**: centralise data management. Control flow is dictated through via triggers or subsystems using locks to synchronise. Cons: performance and modifiability bottleneck, high coupling between repo and subsystems.
+**Repository**: centralise **data management**. Control flow is dictated through via triggers or subsystems using locks to synchronise. Cons: performance and modifiability bottleneck, high coupling between repo and subsystems.
 
 
 
@@ -746,15 +750,17 @@ uses black box test to validate against requirements.
 
 **Model-view-controller (MVC)**: separate user interface layer from other parts. 
 
+![1544423460334](img/1544423460334.png)
+
 
 
 ### Use-case Analysis
 
-**Analysis class**: abstraction of one or several classes in the final system implementation. 
+Aims for a **maintainable** and **stable** system as localisation of changes is achieved. **Analysis class**: abstraction of one or several classes in the final system implementation. 
 
 
 
-**Boundary class** models the interaction between system and actors which represents an abstraction of UI elements / communication interface.
+**Boundary class** models the interaction between system and actors which represents an abstraction of UI elements / communication interface. Encapsulates and isolates changes in the system's interface.
 
 ![1544087898426](img/1544087898426.png)
 
@@ -766,9 +772,13 @@ uses black box test to validate against requirements.
 
 
 
-**Control class** models coordination, sequencing, transactions, and control behaviour. Responsible for the flow of events, and only tied to at most one actor. It usually does not have a correspondence in the application domain. 
+**Control class** models coordination, sequencing, transactions, and control behaviour. Responsible for the flow of events, and only tied to at most one actor. It usually does not have a correspondence in the application domain. Encapsulates and isolates changes to control / business logic.
 
 ![1544090674060](img/1544090674060.png)
+
+
+
+**Design class** is a class whose specifications has been completed that it can be implemented, described using the syntax of programming language.
 
 
 
@@ -803,7 +813,7 @@ State Machine describes the behaviour inside an object. It is directed graph fro
 
 
 
-Events are processed one at a time, and one transition within a state machine may fire. Transition out of a state can be **automatic** (activity of the state completes) or **non-automatic** (caused by an event).
+Events are processed one at a time, and one transition within a state machine may fire. Transition out of a state can be **automatic** (activity of the state completes) or **non-automatic** (caused by an event). Transition without labels fire immediately after the activity within a state, if any, completes.
 
 
 
@@ -860,6 +870,10 @@ Design pattern is a general reusable solution to commonly occurring problem. It 
 
 
 
+**Strategy** pattern makes *Client* class configured with *ConcreteStrategy* object maintained through reference to *Strategy* object. *Strategy* class declares the interface common to all supported algorithms, which then defined by the *ConcreteStrategy*.
+
+
+
 **Observer**  pattern defines a one-to-many dependency between objects, so that when an object changes state, the dependents are notified and updated automatically.
 
 
@@ -909,7 +923,16 @@ Anti pattern tells what is a bad solution, used as tools for social control.
 
 ## L20
 
-**Quality Assurance** consists of procedures, techniques, and tools to ensure that a product meets or exceeds standards during development cycle. **Quality control** ensures standards are followed, **quality planning** selects and tailors standards, **quality assurance** defines organisational standards.
+**Quality Assurance** consists of procedures, techniques, and tools to ensure that a product meets or exceeds standards during development cycle. **Quality control** ensures standards are followed, **quality planning** selects and tailors standards, **quality assurance** defines organisational standards. The main goal of quality assurance is to continuously improve the quality. 
+
+
+
+Software quality is defined through:
+
+- **Design goals** or quality attributes that a software must meet
+- Measurement of the quality attributes
+- Track the progress and values of the quality attributes throughout the development
+- Incorporate feedback into the development process to improve its quality attributes
 
 
 
@@ -922,13 +945,13 @@ Anti pattern tells what is a bad solution, used as tools for social control.
 
 
 
-**Metrics** is a objective way to measure software product, process, or artifact. It is used to control development process and predict product quality. 
+**Metrics** is a objective way to measure quality attributes of software product, process, or artifact. It is used to control development process and predict product quality. As it is difficult to measure quality attributes during the development, **internal attributes** were instead measure to calculate and predict the quality attributes.
 
 
 
 ### Quality Metrics for System Design
 
-For design component, a design goal is maintainability.
+For design component, a design goal is **maintainability**.
 
 #### Structural fan-in / fan-out
 
@@ -952,25 +975,17 @@ Complexity = component-length * (fan-in * fan-out)^2
 
 #### IEEE Standard
 
-Considers properties of subsystems (number of subsystems and degree of coupling) and database (number of attributes and classes). 
+Considers properties of subsystems (number of subsystems and degree of coupling) and database (number of attributes and classes) through **DSQI (Design Structure Quality Index)**; with the value [0,1]. Lower DSQI, further work may be required.
 
 
 
-**DSQI (Design Structure Quality Index)** is computed, with the value [0,1]. Lower DSQI, further work may be required.
-
-
-
-Also able to consider changes made throughout product's history and compute the stability.
-
-
-
-**SMI (Software Maturity Index)** is computer; with the value [0,1]. Higher SMI, the more stabile.
+Also able to consider changes made throughout product's history and compute the stability through **SMI (Software Maturity Index)**; with the value [0,1]. Higher SMI, the more stabile.
 
 
 
 ### Quality Metrics for Implementation
 
-For implementation component, design goals are reliability and ease of implementation. Measured based on lines of code, length of identifiers, depth of conditional nesting.
+For implementation component, design goals are **reliability** and **ease of implementation**. Measured based on lines of code, length of identifiers, depth of conditional nesting.
 
 
 
@@ -988,19 +1003,29 @@ For implementation component, design goals are reliability and ease of implement
 
 
 
-**Software Configuration Management (SCM)** manages, controls, and monitors changes to life cycle artifacts.
+Proving programs and specifications are correct through assertions. 
 
 
 
-**ISO**:
-
-- ISO 9000: specifies actions to be taken when quality goals and constraints specified
-- ISO 9001: requires organisation to have documented quality system, which defines and documents the organisation's quality process
-- ISO 9000-3: specifies generic procedures that should be in place to have a quality process. Intended to help client assess the process management capabilities of an organisation.
+**Cleanroom Process** combine the Statistical Quality Assurance and assertion method.
 
 
 
-**SEI Process Capability Maturity Model (SEI-CMM)** is intended to help organisation assess and improve the development process. Can be a measure of people quality too, known as **PCMM**.
+### Achieving Project, Process, and People Quality
+
+**Software Configuration Management (SCM)** manages, controls, and monitors changes to life cycle artifacts to achieve project quality.
+
+
+
+**ISO** helpsthe assessment of an organisation's software development **process**:
+
+- ISO 9000: specifies **actions to be taken** when quality goals and constraints specified
+- ISO 9001: requires organisation to have **documented** quality system, which defines and documents the organisation's quality process
+- ISO 9000-3: specifies **generic procedures** that should be in place to have a quality process. Intended to help client assess the process management capabilities of an organisation.
+
+
+
+**SEI Process Capability Maturity Model (SEI-CMM)** is intended to help organisation assess and improve the development **process**. Can be a measure of people quality too, known as **PCMM**.
 
 - Level 1: **Initial** process (ad hoc): no formal procedures, no project plans, etc
 - Level 2: **Repeatable** process (intuitive): focus on management, basic project controls
@@ -1016,7 +1041,7 @@ For implementation component, design goals are reliability and ease of implement
 
 ### Project Management
 
-**Software Development Plan (SDP)** documents the scope of the development effort and how the project will be managed. **Work Breakdown Structure (WBS)** allow each task to be easily managed, as the SDP breaks the project into tasks and sub-tasks for easier division of labour.
+**Software Development Plan (SDP)** documents the scope of the development effort and how the project will be managed, it defines the project. **Work Breakdown Structure (WBS)** allow each task to be easily managed, as the SDP breaks the project into tasks and sub-tasks for easier division of labour.
 
 
 
@@ -1033,6 +1058,18 @@ For implementation component, design goals are reliability and ease of implement
 - Critical path is the longest time path from start to end node. 
 - **Slack** specifies how much the task can be delayed without putting project behind schedule.
 - **Dummy task** ensures each node has at least one task starting and one task ending at the node.
+
+
+
+**Risk Planning** plans for risk by trying to:
+
+- foresee what can go wrong before it happens
+- estimate its likelihood of happening and its impact
+- develop cost-efficient contingency plans, actions to take if it happens
+
+
+
+Project needs to be monitored consistently and inoffensively, as 	change is almost inevitable and most likely to fall behind schedule, by holding periodic project status meetings regularly, doing project review, check KPIs are accomplished as planned, compare target and actual budget and start dates for each activities.
 
 
 
